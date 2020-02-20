@@ -17,6 +17,10 @@ public class SimpleCamelRoute extends RouteBuilder {
                 .log("Timer invoke and the body ${body}")
                 .pollEnrich("file:data/input?delete=true&readLock=none")
                 .to("file:data/output");
+        from("{{startRoute}}")
+                .log("Timer invoke and the body using dynamic values " + env.getProperty("message"))
+                .pollEnrich("{{fromRoute}}")
+                .to("{{toRoute1}}");
 
     }
 }

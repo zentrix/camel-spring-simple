@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: dev
+camel:
+  springboot:
+    shutdown-timeout: 2
+---
+
+spring:
+  profiles: dev
+
+startRoute: timer:hello?period=10s
+fromRoute : file:data/inputprop?delete=true&readLock=none
+toRoute1: file:data/outputprop
+
+message: DEV Environment
+
+---
+spring:
+  profiles: stage
+
+startRoute: timer:hello?period=10s
+fromRoute : file:data/inputprop?delete=true&readLock=none
+toRoute1: file:data/outputprop
+
+message: STAGE Environment
+
+---
+spring:
+  profiles: prod
+
+startRoute: timer:hello?period=10s
+fromRoute : file:data/inputprop?delete=true&readLock=none
+toRoute1: file:data/outputprop
+
+
+message: PROD Environment
+---
