@@ -1,4 +1,4 @@
-package com.carlos.camelspringsimple;
+package com.carlos.camelspringsimple.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.ProducerTemplate;
