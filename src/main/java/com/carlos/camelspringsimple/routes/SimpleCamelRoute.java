@@ -13,10 +13,7 @@ public class SimpleCamelRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("timer:hello?period=10s")
-                .log("Timer invoke and the body ${body}")
-                .pollEnrich("file:data/input?delete=true&readLock=none")
-                .to("file:data/output");
+
         from("{{startRoute}}")
                 .log("Timer invoke and the body using dynamic values " + env.getProperty("message"))
                 .pollEnrich("{{fromRoute}}")
